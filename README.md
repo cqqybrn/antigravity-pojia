@@ -91,7 +91,7 @@ Antigravity loads **global rules** from `~/.gemini/config/` (Windows: `%USERPROF
 
 **Who picks it up**
 
-Any local **`agy`** session: agy-auto CLI/API, **AGY Studio**, Antigravity IDE/CLI — same file, same behavior.
+Any local **`agy`** session: **antigravity-pojia** HTTP/CLI, **[AGY Studio](https://github.com/cqqybrn/agy-studio)** WebUI, Antigravity IDE — same file, same behavior. Studio 仓库内 `rules/global/AGENTS.md` 应与本仓库保持同步。
 
 **Customize / disable**
 
