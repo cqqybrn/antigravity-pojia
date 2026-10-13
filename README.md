@@ -4,6 +4,8 @@ Local **OpenAPI-style backend** for [Google Antigravity](https://antigravity.goo
 
 Turn Antigravity into a headless, auto-approving agent service you can drive from **any frontend** (or Cursor / OpenAI-compatible clients).
 
+**`npm install`** also installs a bundled **global rule** (`rules/global/AGENTS.md` → `~/.gemini/config/AGENTS.md`) so every local **`agy`** session (CLI, agy-auto, AGY Studio, IDE) loads the same always-on rules — no manual IDE Global Rules paste. See [Global rule install](#global-rule-install-破甲).
+
 | Built-in Antigravity | **agy-auto** |
 | --- | --- |
 | Click Accept / Run all day | Forced `--dangerously-skip-permissions` |
