@@ -20,7 +20,7 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function printHelp() {
-  console.log(`agy-auto — Antigravity CLI auto-approve + account switch
+  console.log(`Antigravity 破甲 (antigravity-pojia) — agy auto-approve + account switch
 
 Run:
   agy-auto <prompt>

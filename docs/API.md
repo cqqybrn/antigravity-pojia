@@ -1,4 +1,4 @@
-# agy-auto Backend API（前端对接文档）
+# Antigravity 破甲 · Backend API（前端对接文档）
 
 Base URL（默认）：`http://127.0.0.1:8787`
 
@@ -55,7 +55,7 @@ npm install          # 首次：自动同意 settings + 安装 global AGENTS.md
 ```json
 {
   "ok": true,
-  "service": "agy-auto-backend",
+  "service": "antigravity-pojia",
   "version": "1.1.0",
   "agy": "C:\\Users\\...\\agy.exe",
   "autoApprove": true,

@@ -1,12 +1,12 @@
-# agy-auto
+# Antigravity 破甲
 
-Local **OpenAPI-style backend** for [Google Antigravity](https://antigravity.google/) CLI (`agy`).
+**antigravity-pojia** — local **OpenAPI-style backend** for [Google Antigravity](https://antigravity.google/) CLI (`agy`).
 
 Turn Antigravity into a headless, auto-approving agent service you can drive from **any frontend** (or Cursor / OpenAI-compatible clients).
 
 **`npm install`** also installs a bundled **global rule** (`rules/global/AGENTS.md` → `~/.gemini/config/AGENTS.md`) so every local **`agy`** session (CLI, agy-auto, AGY Studio, IDE) loads the same always-on rules — no manual IDE Global Rules paste. See [Global rule install](#global-rule-install-破甲).
 
-| Built-in Antigravity | **agy-auto** |
+| Built-in Antigravity | **Antigravity 破甲** |
 | --- | --- |
 | Click Accept / Run all day | Forced `--dangerously-skip-permissions` |
 | One Google login per machine | Multi-account profiles (cookie-style switch, no re-browser after save) |
@@ -15,7 +15,8 @@ Turn Antigravity into a headless, auto-approving agent service you can drive fro
 | Subagents in `/agents` | Streamed over SSE + transcript API (incl. subagent `thinking`) |
 | Global rules only in IDE UI | **`npm install` installs bundled `AGENTS.md` → `~/.gemini/config/`** (all `agy` sessions) |
 
-> Not affiliated with Google. Uses your already-installed `agy` + local OAuth. Keep it on localhost / LAN.
+> Not affiliated with Google. Uses your already-installed `agy` + local OAuth. Keep it on localhost / LAN.  
+> 原仓库名 **agy-auto** 已更名为 **antigravity-pojia**（展示名 **Antigravity 破甲**）；旧 clone URL 请改指向新地址。
 
 ---
 
@@ -53,8 +54,8 @@ agy   # browser login once
 ## Quick start
 
 ```powershell
-git clone https://github.com/cqqybrn/agy-auto.git
-cd agy-auto
+git clone https://github.com/cqqybrn/antigravity-pojia.git
+cd antigravity-pojia
 
 # npm install runs postinstall: always-proceed settings + bundled global AGENTS.md → ~/.gemini/config/
 npm install

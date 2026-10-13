@@ -1,7 +1,7 @@
 {
-  "name": "agy-auto-backend",
+  "name": "antigravity-pojia",
   "version": "1.4.0",
-  "description": "Antigravity CLI backend with auto-approve, parallel agent, and SSE",
+  "description": "Antigravity 破甲 — agy CLI backend with auto-approve, bundled global rules, and SSE",
   "type": "module",
   "main": "src/server.js",
   "bin": {

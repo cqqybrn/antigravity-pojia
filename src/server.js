@@ -346,7 +346,7 @@ const server = http.createServer(async (req, res) => {
     }
     return sendJson(res, 200, {
       ok: true,
-      service: "agy-auto-backend",
+      service: "antigravity-pojia",
       version: "1.4.0",
       capabilities: {
         autoApprove: true,
@@ -608,7 +608,7 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method === "GET" && url.pathname === "/v1/capabilities") {
       return sendJson(res, 200, {
-        service: "agy-auto-backend",
+        service: "antigravity-pojia",
         version: "1.4.0",
         official_parity: {
           model_quotas_panel: true,

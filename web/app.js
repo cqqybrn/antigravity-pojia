@@ -1,4 +1,4 @@
-/* Antigravity Console — frontend for agy-auto backend (docs/API.md) */
+/* Antigravity 破甲 — web console (docs/API.md) */
 (() => {
   "use strict";
 
@@ -1341,7 +1341,7 @@
       chip.textContent = `#${shortId(conv.conversationId)}`;
       chip.classList.remove("hidden");
     } else chip.classList.add("hidden");
-    document.title = conv?.title ? `${conv.title} · Antigravity` : "Antigravity Console";
+    document.title = conv?.title ? `${conv.title} · Antigravity 破甲` : "Antigravity 破甲";
   }
 
   function renderTurn(conv, turn) {
@@ -3830,7 +3830,7 @@
       const today = loc.today || {};
       const total = loc.total || {};
       const sec = h("div", { class: "section", style: "margin-top:22px" },
-        h("div", { class: "section-title" }, h("span", { text: "本地统计" }), h("span", { class: "tag", text: "via agy-auto" })),
+        h("div", { class: "section-title" }, h("span", { text: "本地统计" }), h("span", { class: "tag", text: "antigravity-pojia" })),
         h("div", { class: "stat-grid" },
           h("div", { class: "stat" }, h("div", { class: "s-label", text: "今日请求" }), h("div", { class: "s-val", text: fmtNum(today.requests || 0) }),
             h("div", { class: "s-sub", text: `↑${fmtNum(today.input_tokens || 0)} ↓${fmtNum(today.output_tokens || 0)}` })),
