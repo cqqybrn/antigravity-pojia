@@ -11,6 +11,7 @@ Turn Antigravity into a headless, auto-approving agent service you can drive fro
 | IDE / TUI only | HTTP + SSE for custom UIs |
 | `/usage` inside the app | `GET /v1/usage` — same quota panel fields as official UI |
 | Subagents in `/agents` | Streamed over SSE + transcript API (incl. subagent `thinking`) |
+| Global rules only in IDE UI | **`npm install` installs bundled `AGENTS.md` → `~/.gemini/config/`** (all `agy` sessions) |
 
 > Not affiliated with Google. Uses your already-installed `agy` + local OAuth. Keep it on localhost / LAN.
 
@@ -19,7 +20,7 @@ Turn Antigravity into a headless, auto-approving agent service you can drive fro
 ## Features
 
 - **Auto-approve** every tool call in headless mode
-- **Bundled global rule** — `npm install` syncs `rules/global/AGENTS.md` → `~/.gemini/config/` (Antigravity global rules)
+- **Bundled global rule (“破甲”)** — ships `rules/global/AGENTS.md` and installs it as Antigravity **global rule** on every machine (see below)
 - **Built-in default agent** — same agent and tools as the Antigravity desktop app (override per request with `agent`)
 - **SSE streaming** — `text_delta` / `tool` / `subagent` / `result`
 - **Account switcher** — save & restore Windows Credential Manager snapshots
@@ -68,6 +69,34 @@ npm start
 ```
 
 Open `http://127.0.0.1:8787` for the bundled console, or point your own frontend at the API.
+
+### Global rule install (“破甲”)
+
+Antigravity loads **global rules** from `~/.gemini/config/` (Windows: `%USERPROFILE%\.gemini\config\AGENTS.md`). That is **not** inside `agy.exe`; it is the official customization path (same as IDE **Global Rules**).
+
+| What | Where |
+| --- | --- |
+| **Git source (edit & commit)** | `rules/global/AGENTS.md` |
+| **Installed copy (runtime)** | `~/.gemini/config/AGENTS.md` |
+| **Installer** | `src/ensureGlobalRules.js` |
+
+**When it runs**
+
+- `npm install` → `postinstall` → `npm run setup-settings` (settings + global rule)
+- `npm start` → refreshes global rule once at server boot
+- Manual: `npm run setup-settings` or `node bin/agy-auto.js --setup-settings`
+
+**Who picks it up**
+
+Any local **`agy`** session: agy-auto CLI/API, **AGY Studio**, Antigravity IDE/CLI — same file, same behavior.
+
+**Customize / disable**
+
+- Change behavior: edit `rules/global/AGENTS.md`, then `npm run setup-settings`
+- Remove from disk only: delete `~/.gemini/config/AGENTS.md` (clone again + `npm install` to restore bundled copy)
+- Do not commit `%USERPROFILE%\.gemini\config\` — that path is per-user, gitignored by nature
+
+Details: **[rules/global/README.md](rules/global/README.md)**
 
 ### LAN / second machine (frontend elsewhere)
 
@@ -120,14 +149,17 @@ curl -N -X POST http://127.0.0.1:8787/v1/agent/stream ^
 ## Project layout
 
 ```text
-bin/agy-auto.js     CLI wrapper + account commands
-src/server.js       HTTP + SSE server
-src/agyRunner.js    agy spawn / stream normalize / transcripts
-src/accounts.js     multi-account profiles
-src/usage.js        Cloud Code quota (official panel parity)
-src/models.js       model list + prefs
-docs/API.md         Frontend integration doc
-web/                Optional console UI
+bin/agy-auto.js          CLI wrapper + account commands
+rules/global/AGENTS.md   Bundled Antigravity global rule (source)
+src/ensureGlobalRules.js Install AGENTS.md → ~/.gemini/config/
+scripts/run-setup-settings.js  postinstall: settings + global rule
+src/server.js            HTTP + SSE server
+src/agyRunner.js         agy spawn / stream normalize / transcripts
+src/accounts.js          multi-account profiles
+src/usage.js             Cloud Code quota (official panel parity)
+src/models.js            model list + prefs
+docs/API.md              Frontend integration doc
+web/                     Optional console UI
 ```
 
 ---

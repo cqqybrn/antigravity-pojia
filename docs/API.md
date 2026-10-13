@@ -12,8 +12,17 @@ Base URL（默认）：`http://127.0.0.1:8787`
 
 ```powershell
 cd D:\ProgramData\antigravity
+npm install          # 首次：自动同意 settings + 安装 global AGENTS.md
 .\start-server.cmd
 ```
+
+### 全局规则（破甲）
+
+- **源文件（仓库）**：`rules/global/AGENTS.md`
+- **本机生效路径**：`%USERPROFILE%\.gemini\config\AGENTS.md`
+- **安装命令**：`npm install`（postinstall）、`npm run setup-settings`、`npm start`（启动时再同步一次）
+- **作用范围**：本机所有 `agy` 会话（含 agy-auto、AGY Studio、Antigravity IDE），与在 IDE 里填 Global Rules 同一条链路
+- **说明文档**：[rules/global/README.md](../rules/global/README.md)
 
 ---
 
@@ -21,6 +30,7 @@ cd D:\ProgramData\antigravity
 
 | 能力 | 怎么做 |
 |------|--------|
+| **全局规则（破甲）安装** | 克隆后 `npm install`（postinstall）或 `npm run setup-settings`；源文件 `rules/global/AGENTS.md` → `~/.gemini/config/AGENTS.md` |
 | 跑任务（自动同意） | `POST /v1/agent` |
 | **流式任务（文本/工具/子代理）** | **`POST /v1/agent/stream`（SSE）** |
 | **取消任务** | **`POST /v1/agent/abort`** |

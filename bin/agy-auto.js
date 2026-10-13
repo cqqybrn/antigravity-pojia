@@ -27,7 +27,7 @@ Run:
   agy-auto -p <prompt>
   agy-auto --interactive [prompt]
   agy-auto --serve
-  agy-auto --setup-settings
+  agy-auto --setup-settings          Always-proceed settings + global AGENTS.md → ~/.gemini/config/
 
 Accounts (like switching cookies — no browser after first save):
   agy-auto account list
