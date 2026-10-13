@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node src/server.js",
     "cli": "node bin/agy-auto.js",
-    "setup-settings": "node scripts/run-setup-settings.js"
+    "setup-settings": "node scripts/run-setup-settings.js",
+    "postinstall": "node scripts/run-setup-settings.js"
   },
   "engines": {
     "node": ">=18"

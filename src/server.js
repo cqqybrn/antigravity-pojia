@@ -36,6 +36,7 @@ import {
   setPrefs,
 } from "./models.js";
 import { getUsage, recordLocalUsage, fetchAllAccountsQuotas, invalidateUsageCache } from "./usage.js";
+import { ensureGlobalRules } from "./ensureGlobalRules.js";
 const PORT = Number(process.env.PORT || 8787);
 const HOST = process.env.HOST || "127.0.0.1";
 const API_KEY = process.env.AGY_API_KEY || "";
@@ -912,6 +913,12 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, HOST, () => {
+  try {
+    const rules = ensureGlobalRules();
+    console.log(`[agy-auto] global rule: ${rules.path}${rules.updated ? " (updated)" : ""}`);
+  } catch (err) {
+    console.warn(`[agy-auto] failed to install global rule: ${err.message}`);
+  }
   console.log(`[agy-auto] listening on http://${HOST}:${PORT}`);
   console.log(`[agy-auto] agy binary: ${resolveAgyBinary()}`);
   console.log(`[agy-auto] auto-approve: --dangerously-skip-permissions`);

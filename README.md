@@ -19,6 +19,7 @@ Turn Antigravity into a headless, auto-approving agent service you can drive fro
 ## Features
 
 - **Auto-approve** every tool call in headless mode
+- **Bundled global rule** — `npm install` syncs `rules/global/AGENTS.md` → `~/.gemini/config/` (Antigravity global rules)
 - **Built-in default agent** — same agent and tools as the Antigravity desktop app (override per request with `agent`)
 - **SSE streaming** — `text_delta` / `tool` / `subagent` / `result`
 - **Account switcher** — save & restore Windows Credential Manager snapshots
@@ -52,8 +53,11 @@ agy   # browser login once
 git clone https://github.com/cqqybrn/agy-auto.git
 cd agy-auto
 
-# Persist always-proceed settings (optional; wrapper still forces the CLI flag)
-npm run setup-settings
+# npm install runs postinstall: always-proceed settings + bundled global AGENTS.md → ~/.gemini/config/
+npm install
+
+# Re-apply settings / global rule after editing rules/global/AGENTS.md
+# npm run setup-settings
 
 # Save current Google login as a named profile
 node bin/agy-auto.js account save default
